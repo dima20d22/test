@@ -1,19 +1,26 @@
 import { RouterModule, Routes } from '@angular/router';
-
-import { AppComponent } from './app.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { NgModule } from '@angular/core';
+import { LoginComponent } from './auth/components/Login/login.component';
+import { AppComponent } from './app.component';
+import { MainComponent } from './auth/components/main/main.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
-
-    children: [
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-    ],
+    component: MainComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class ApproutingModule {}
