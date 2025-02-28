@@ -4,7 +4,8 @@ import { importProvidersFrom } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { routes } from './app/app.routes';
+import { provideStore } from '@ngrx/store';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(RouterModule.forRoot(routes))],
+  providers: [importProvidersFrom(RouterModule.forRoot(routes)), provideStore()],
 }).catch((err) => console.error(err));
