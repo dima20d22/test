@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './auth/components/Login/login.component';
+
 import { AppComponent } from './app.component';
 import { MainComponent } from './auth/components/main/main.component';
 
@@ -13,10 +13,6 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
   },
 ];
 @NgModule({
