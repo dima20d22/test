@@ -12,7 +12,7 @@ import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { CommonModule } from '@angular/common';
 import { authFeature } from '../../store/features';
 import { registerActions } from '../../store/register.action';
-import { AuthServise } from '../../servises/auth.servise';
+import { AuthServise } from '../../services/auth.servise';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({

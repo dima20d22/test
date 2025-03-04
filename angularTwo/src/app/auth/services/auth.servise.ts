@@ -4,12 +4,15 @@ import { map, Observable } from 'rxjs';
 import { CurrentUserinterface } from '../../shared/types/currentUser.interface';
 import { HttpClient } from '@angular/common/http';
 import { AuthResponseinterface } from '../types/authResponse.interface';
+import { baseUrl } from '../../shared/service/urlServise';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthServise {
   constructor(private http: HttpClient) {}
   register(data: RegisterRequestinterface): Observable<CurrentUserinterface> {
-    const url = 'https://conduit.productionready.io/api/users';
+    const url = baseUrl + '/users';
 
     return this.http
       .post<AuthResponseinterface>(url, data)
