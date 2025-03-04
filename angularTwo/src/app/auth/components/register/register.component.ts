@@ -5,12 +5,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { registerAction } from '../../store/actions/register.action';
 import { Observable } from 'rxjs';
-import { isSubmittingSelector } from '../../store/selectors';
+import { selectIsSubmitting } from '../../store/selectors';
 import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { CommonModule } from '@angular/common';
+import { authFeature } from '../../store/reducers';
 
 @Component({
   imports: [ReactiveFormsModule, CommonModule],
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.isSubmiting$ = this.store.pipe(select(isSubmittingSelector));
+    this.isSubmiting$ = this.store.select(authFeature.selectIsSubmitting);
     console.log(this.isSubmiting$);
   }
 
