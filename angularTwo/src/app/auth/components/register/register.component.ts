@@ -6,16 +6,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { registerAction } from '../../store/actions/register.action';
+
 import { Observable } from 'rxjs';
-import { selectIsSubmitting } from '../../store/selectors';
 import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { CommonModule } from '@angular/common';
 import { authFeature } from '../../store/features';
+import { registerActions } from '../../store/register.action';
+import { AuthServise } from '../../servises/auth.servise';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-  imports: [ReactiveFormsModule, CommonModule],
-  providers: [FormBuilder],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  providers: [FormBuilder, AuthServise],
   selector: 'ms-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
@@ -27,7 +29,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private authServise: AuthServise
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.valid);
-    this.store.dispatch(registerAction(this.form.value));
+    this.authServise.register(this.form.value).subscribe();
+    this.store.dispatch(registerActions.registerSuccess(this.form.value));
   }
 }
