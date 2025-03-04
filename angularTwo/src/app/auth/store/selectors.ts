@@ -1,3 +1,3 @@
-import { authFeature } from './reducers';
+import { authFeature } from './features';
 
 export const { selectIsSubmitting } = authFeature;

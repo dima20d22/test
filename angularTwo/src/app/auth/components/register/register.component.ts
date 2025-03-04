@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { selectIsSubmitting } from '../../store/selectors';
 import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { CommonModule } from '@angular/common';
-import { authFeature } from '../../store/reducers';
+import { authFeature } from '../../store/features';
 
 @Component({
   imports: [ReactiveFormsModule, CommonModule],

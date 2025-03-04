@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
-import { authFeature } from './auth/store/reducers';
+import { authFeature } from './auth/store/features';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
