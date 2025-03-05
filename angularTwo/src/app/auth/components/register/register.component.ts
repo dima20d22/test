@@ -12,11 +12,12 @@ import { AppStateInterface } from '../../../shared/types/appState.interface';
 import { CommonModule } from '@angular/common';
 import { authFeature } from '../../store/features';
 import { registerActions } from '../../store/register.action';
-import { AuthServise } from '../../services/auth.servise';
+import { AuthService } from '../../services/auth.service';
+import { RegisterRequestinterface } from '../../types/registerRequest.interface';
 
 @Component({
   imports: [ReactiveFormsModule, CommonModule],
-  providers: [FormBuilder, AuthServise],
+  providers: [FormBuilder, AuthService],
   selector: 'ms-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private authServise: AuthServise
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +52,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authServise.register(this.form.value).subscribe();
-    this.store.dispatch(registerActions.registerSuccess(this.form.value));
+    const request: RegisterRequestinterface = {
+      user: this.form.value,
+    };
+    this.store.dispatch(registerActions.register({ request }));
   }
 }

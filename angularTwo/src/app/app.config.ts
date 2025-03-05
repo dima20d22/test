@@ -9,7 +9,9 @@ import { routes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { authFeature } from './auth/store/features';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { RegisterEffect } from './auth/store/effects/register.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,5 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeature),
     provideStoreDevtools(),
     provideHttpClient(),
+    provideHttpClient(withFetch()),
+    importProvidersFrom(EffectsModule.forRoot([RegisterEffect])),
   ],
 };

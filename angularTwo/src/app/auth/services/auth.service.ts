@@ -9,8 +9,8 @@ import { baseUrl } from '../../shared/service/urlServise';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServise {
-  private http = inject(HttpClient);
+export class AuthService {
+  constructor(private http: HttpClient) {}
   register(data: RegisterRequestinterface): Observable<CurrentUserinterface> {
     const url = baseUrl + '/users';
 

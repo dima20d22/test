@@ -10,7 +10,7 @@ export const authFeature = createFeature({
   name: 'auth',
   reducer: createReducer(
     initialState,
-    on(registerActions.registerSuccess, (state) => ({
+    on(registerActions.register, (state) => ({
       ...state,
       isSubmitting: true,
     }))
