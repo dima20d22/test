@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { authFeature } from './auth/store/features';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState(authFeature),
     provideStoreDevtools(),
+    provideHttpClient(),
   ],
 };

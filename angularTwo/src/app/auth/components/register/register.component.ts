@@ -13,10 +13,9 @@ import { CommonModule } from '@angular/common';
 import { authFeature } from '../../store/features';
 import { registerActions } from '../../store/register.action';
 import { AuthServise } from '../../services/auth.servise';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [ReactiveFormsModule, CommonModule],
   providers: [FormBuilder, AuthServise],
   selector: 'ms-register',
   templateUrl: './register.component.html',

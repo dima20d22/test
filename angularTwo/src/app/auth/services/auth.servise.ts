@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { RegisterRequestinterface } from '../types/registerRequest.interface';
 import { map, Observable } from 'rxjs';
 import { CurrentUserinterface } from '../../shared/types/currentUser.interface';
@@ -10,7 +10,7 @@ import { baseUrl } from '../../shared/service/urlServise';
   providedIn: 'root',
 })
 export class AuthServise {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
   register(data: RegisterRequestinterface): Observable<CurrentUserinterface> {
     const url = baseUrl + '/users';
 
